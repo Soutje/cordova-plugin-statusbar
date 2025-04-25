@@ -28,7 +28,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
-import androidx.core.view.WindowInsetsController;
+import android.view.WindowInsetsController;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaArgs;
