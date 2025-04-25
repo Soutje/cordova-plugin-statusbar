@@ -198,13 +198,23 @@ public class StatusBar extends CordovaPlugin {
 
     private void setStatusBarStyle(final String style) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !style.isEmpty()) {
+             WindowInsetsController controller = window.getInsetsController();
             View decorView = window.getDecorView();
+           
             WindowInsetsControllerCompat windowInsetsControllerCompat = WindowCompat.getInsetsController(window, decorView);
 
             if (style.equals(STYLE_DEFAULT)) {
-                windowInsetsControllerCompat.setAppearanceLightStatusBars(true);
+                controller.setSystemBarsAppearance(
+        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+    );
+                /* windowInsetsControllerCompat.setAppearanceLightStatusBars(true); */
             } else if (style.equals(STYLE_LIGHT_CONTENT)) {
-                windowInsetsControllerCompat.setAppearanceLightStatusBars(false);
+                                controller.setSystemBarsAppearance(
+        0,
+        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+    );
+               /*  windowInsetsControllerCompat.setAppearanceLightStatusBars(false); */
             } else {
                 LOG.e(TAG, "Invalid style, must be either 'default' or 'lightcontent'");
             }
